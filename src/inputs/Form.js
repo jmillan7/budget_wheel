@@ -1,5 +1,6 @@
 import { useState } from "react";
 import './Form.css'
+import { useLocalStorage } from '@uidotdev/usehooks';
 import { PieChart } from "react-minimal-pie-chart";
 import uniqolor from "uniqolor";
 import { useAnimation, motion } from "framer-motion";
@@ -8,10 +9,10 @@ import { useAnimation, motion } from "framer-motion";
 
 const Form = () => {
     const [expense, setExpense] = useState("");
-    const [list, setList] = useState([]);
+    const [list, setList] = useLocalStorage({});
     const [spun, setSpun] = useState(false);
     const onAdd = () => {
-        setList(list => [...list, {
+        setList([...list, {
             text: expense,
             complete: false,
             color: uniqolor.random().color,
@@ -29,7 +30,6 @@ const Form = () => {
         else {
             x = Math.floor(Math.random() * 360) + 1800;
         }
-        console.log(x);
         return x;
     }
     const handleTap = async () => {
@@ -52,18 +52,22 @@ const Form = () => {
                     value={expense}
                     onChange={(e) => 
                         setExpense(e.currentTarget.value)}
-                        />
+                />
+                <div>
+                    
                 <button type="primary" onClick={onAdd}> Add </button>
                 <button type="reset" onClick={(e) =>
                     setList([])}> Delete List</button>
                 <button type="reset" onClick={handleTap}>Spin</button>
+                </div>
             </div>
             <motion.div animate={controls}>
-            <PieChart
+                <PieChart
+                className="pie"
                 data={list}
                 label={({ dataEntry }) => dataEntry.text}
-                labelStyle={{ fontSize: 4 }}
-                radius={25}
+                labelStyle={{ fontSize: '3px' }}
+                radius={20}
                 viewBoxSize={[100,100]}
                 />
             </motion.div>

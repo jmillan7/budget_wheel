@@ -1,3 +1,13 @@
 .delete {
-    margin-top: 20%;
+    margin: 5%;
+}
+.bp-container {
+    padding-top:12%;
+    background-color: grey;
+}
+.incomes {
+    color:white;
+}
+.table {
+    width:100%;
 }
