@@ -1,0 +1,17 @@
+.container {
+    margin-top: 12%;
+}
+.button-container {
+    z-index: -1;
+    margin-top: 10%;
+}
+.arrow {
+    display: inline-block;
+    border: solid #FCA101;
+    border-width: 0 20px 20px 0;
+    rotate: 135deg;
+    padding: 20px;
+    position: absolute;
+    top: 120%;
+    right: 23%;
+}
